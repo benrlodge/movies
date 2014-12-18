@@ -1,0 +1,14 @@
+@import "../variables";
+@import "../mixins";
+a{
+	color: #fff;
+}
+h1{
+	font-size: 40px;
+	@include bp-phone{
+		font-size: 28px;
+	}
+}
+h1, h2, h3, h4{
+	color: #9ea0a5;
+}

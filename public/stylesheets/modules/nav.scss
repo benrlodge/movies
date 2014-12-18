@@ -1,0 +1,52 @@
+.logo{
+	width: 70px;
+	img{
+		position: absolute;
+		top: 7px;
+		left: 10px;
+	}
+	
+}
+
+.top-nav__item{
+	display: inline-block;
+}
+.top-nav{
+	margin: 0;
+	background: #26292E;
+	position: fixed;
+	z-index: 2;
+	top: 0;
+	left: 0;
+	width: 100%;
+	padding: 10px 0;
+}
+
+
+.top-nav__link{
+	color: #fff;
+	text-decoration: none;
+	font-size: 16px;
+	display: inline-block;
+	vertical-align: middle;
+	padding: 0 15px;
+	&:hover, &.active{
+		color: $color-accent;
+		text-decoration: none;
+	}
+	@include bp-phone{
+		margin-top: 10px;	
+	}
+}
+
+.top-nav__search{
+	padding: 8px;
+	margin-right: 20px;
+	width: 200px;
+	font-size: 13px;
+	color: #fff;
+	background-color: #444;
+	border: 1px solid #151515;
+
+}
+

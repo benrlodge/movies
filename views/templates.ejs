@@ -1,0 +1,111 @@
+<!-- Navigation -->
+
+<script type="text/template" id="top-nav-template">
+
+  <ul class='top-nav'>
+    <li class='top-nav__item logo'> <img src="images/cow.png"> </li>
+    <li class='top-nav__item'> <input type="text" class='top-nav__search' placeholder="Search Movies..."> </li>
+    <li class='top-nav__item'> <a class='top-nav__link' href="#/in_theaters/">In Theaters Now</a>  </li>
+    <li class='top-nav__item'> <a class='top-nav__link' href="#/new_releases/">New DVD Releases</a> | </li> 
+    <li class='top-nav__item'> <a class='top-nav__link' href="#/bookmarks/"><i class="fa fa-bookmark"></i> Bookmarks </a> </li>
+    <li class='top-nav__item pull-right'> 
+      <a class='top-nav__link' href="/auth/facebook"><i class="fa fa-facebook-square"></i> Sign in</a> 
+    </li>
+  </ul>
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+  <!--  Movie List -->
+
+  <script type="text/template" id="movies-list-template">
+    <h1 class='movie-list__headline'>{{page.name}}</h1>
+    <div class='sort-links'>
+      <span data-action="sort-movies" class='sort-link active' data-sort="title">Sort A-Z</span> | 
+      <span data-action="sort-movies" class='sort-link' data-sort="critics_score">Sort by Critics Score</span> | 
+      <span data-action="sort-movies" class='sort-link' data-sort="audience_score">Sort by Audience Score</span>
+    </div>
+  </script>
+
+
+
+
+  <!-- One movie for movie list -->
+  <script type="text/template" id="movie-template">
+      <i data-id="{{id}}" data-action="bookmark-movie" class="fa {{bookmarkStatusIcon bookmarked}} bookmark-link"></i>
+
+      <a href="#movie/{{id}}" class="movie-preview__title"> 
+        {{truncate title 33}}
+      </a>
+      <div class='movie-preview__l-left'>
+        <a href="#movie/{{id}}" class=""> 
+          <img class='movie-preview__thumb' src="{{posters.profile}}">
+        </a>
+      </div>
+      <div class='movie-preview__l-right'>
+        <p class='movie-preview__synopsis'>
+          {{truncate synopsis 160}} 
+          <a href="#movie/{{id}}" class='read-more'> [Read More] </a>
+        </p>
+        <p class='movie-preview__scores'>
+          <span class='title'> Audience: </span> 
+          <span class='movie-review__score movie-review__score--first'>{{ratings.audience_score}}% </span>
+          <span class='title'> Critics:</span> {{ratings.critics_score}}%
+        </p>
+      </div>
+  </script>
+
+
+
+
+
+
+
+
+<!--  SINGLE MOVIE -->
+
+<script type="text/template" id="single-movie-template">
+  <div class='container--narrow'>
+    <h1>{{movie.attributes.title}}</h1>
+    <div class='movie__meta-container'>
+      <p class='movie__meta'>
+        <i class="fa fa-university"></i>
+        <span class="label">Critics</span> - {{movie.attributes.ratings.critics_rating}} ({{movie.attributes.ratings.critics_score}}%) |
+        <i class="fa fa-users"></i>
+        <span class="label">Audience</span> - {{movie.attributes.ratings.audience_rating}} ({{movie.attributes.ratings.audience_score}}%)
+      </p>
+      <p class='movie__meta'> 
+        {{#if movie.attributes.genres}}
+        <span class="label">Genre:</span> 
+        {{#each movie.attributes.genres}}{{this}}, {{/each}} {{/if}}
+      </p>
+
+      <p class='movie__meta'>     
+        <span class="label">Release Date:</span> {{movie.attributes.year}} | 
+        <span class="label">Runtime:</span> {{movie.attributes.runtime}} mins | 
+        Rated: {{movie.attributes.mpaa_rating}}
+      </p>
+      <p class='movie__meta'>
+        <span class="label">Starring:</span> {{#foreach movie.attributes.abridged_cast}} {{this.name}}{{#if $notLast}},{{/if}} {{/foreach}}
+      </p>
+    </div>
+    <p class='movie__description'>{{movie.attributes.synopsis}}</p>
+  </div>
+
+</script>
+
+
+
+
+
+
+
