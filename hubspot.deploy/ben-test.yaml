@@ -1,0 +1,12 @@
+type: procfile
+appRoot: /ben-movie-test
+loadBalancers:
+  - tools
+
+servers:
+  qa:
+    - mesos
+  prod: []
+
+procfile:
+  web: npm start
